@@ -20,4 +20,10 @@ describe('Nutol', function() {
             expect(nutol.isArray([])).to.be.true;
         });
     });
+
+    describe('extend', function() {
+        it('should return a true', function() {
+            expect(nutol.extend({'foo': 'bar'}, {'bar': 'foo'})).to.have.property('bar');
+        });
+    });
 });
