@@ -1,0 +1,46 @@
+{
+  "name": "nutol",
+  "version": "0.0.0",
+  "description": "Nutol is collections of functions thats provides usefull Node utilities",
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.12"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "valtree": "0.0.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "codecov": "^1.0.1",
+    "grunt": "^1.0.1",
+    "grunt-bump": "^0.8.0",
+    "grunt-npm": "0.0.2",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "test": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec && node_modules/codecov/bin/codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubeniskov/nutol.git"
+  },
+  "author": {
+    "name": "Rubén López Gómez",
+    "email": "me@rubeniskov.com",
+    "url": "https://twitter.com/Rubeniskov"
+  },
+  "licenses": [
+    {
+      "type": "WTFPL",
+      "url": "https://github.com/rubeniskov/nutol/blob/master/LICENSE.md"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/rubeniskov/nutol/issues"
+  },
+  "homepage": "https://github.com/rubeniskov/nutol#readme"
+}
