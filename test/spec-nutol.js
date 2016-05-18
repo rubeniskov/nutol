@@ -21,6 +21,16 @@ describe('Nutol', function() {
         });
     });
 
+    describe('empty', function() {
+        it('should return a true', function() {
+            expect(nutol.empty({}, [])).to.be.true;
+        });
+
+        it('should return a false', function() {
+            expect(nutol.empty({'foo': 'bar'}, [])).to.be.false;
+        });
+    });
+
     describe('extend', function() {
         it('should return a true', function() {
             expect(nutol.extend({'foo': 'bar'}, {'bar': 'foo'})).to.have.property('bar');
