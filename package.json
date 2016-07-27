@@ -3,6 +3,9 @@
   "version": "0.2.1",
   "description": "Nutol is collections of functions thats provides usefull Node utilities",
   "main": "index.js",
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
   "engines": {
     "node": ">=0.12"
   },
@@ -19,7 +22,8 @@
     "grunt-bump": "^0.8.0",
     "grunt-npm": "0.0.2",
     "istanbul": "^0.4.3",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "valtree": "^0.1.4"
   },
   "scripts": {
     "test": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec && node_modules/codecov/bin/codecov"
