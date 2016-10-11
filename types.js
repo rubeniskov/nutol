@@ -29,7 +29,7 @@ var types = module.exports = {
         return toStr.call(arr) === '[object Array]';
     },
     isLikePropertyDescriptor: function isArray(descriptor) {
-        var keys = Object.keys(descriptor).join(' ');
-        return REGEXP_PROPERTY_DESCRIPTOR_CONFENUM.test(keys) && REGEXP_PROPERTY_DESCRIPTOR_GETSETVAL.test(keys);
+        var keys = typeof descriptor === 'object' && Object.keys(descriptor).join(' ');
+        return keys && REGEXP_PROPERTY_DESCRIPTOR_CONFENUM.test(keys) && REGEXP_PROPERTY_DESCRIPTOR_GETSETVAL.test(keys);
     }
 }
