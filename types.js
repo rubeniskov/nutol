@@ -3,9 +3,9 @@ var hasOwn = Object.prototype.hasOwnProperty,
     REGEXP_PROPERTY_DESCRIPTOR_CONFENUM = /(configurable|enumerable)/,
     REGEXP_PROPERTY_DESCRIPTOR_GETSETVAL = /(set|get)|(value)/;
 
-var types = module.exports = {
+var self = module.exports = {
     isPlainObject: function(obj) {
-        if (!obj || !types.isObject(obj))
+        if (!obj || !self.isObject(obj))
             return false;
         var hasOwnConstructor = hasOwn.call(obj, 'constructor');
         var hasIsPrototypeOf = obj.constructor && obj.constructor.prototype && hasOwn.call(obj.constructor.prototype, 'isPrototypeOf');
