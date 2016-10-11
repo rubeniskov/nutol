@@ -1,3 +1,5 @@
 *
 !index.js
-!lib/**/*
+!collections.js
+!types.js
+!extend.js
