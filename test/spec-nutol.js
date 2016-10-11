@@ -27,13 +27,41 @@ describe('Nutol', function() {
         });
 
         it('should return a false', function() {
-            expect(nutol.empty({'foo': 'bar'}, [])).to.be.false;
+            expect(nutol.empty({
+                'foo': 'bar'
+            }, [])).to.be.false;
         });
     });
 
     describe('extend', function() {
         it('should return a true', function() {
-            expect(nutol.extend({'foo': 'bar'}, {'bar': 'foo'})).to.have.property('bar');
+            expect(nutol.extend({
+                'foo': 'bar'
+            }, {
+                'bar': 'foo'
+            })).to.have.property('bar');
+        });
+
+        it('should define property', function() {
+            var obj = nutol.extend({}, {
+                'foo': {
+                    configurable: true,
+                    enumerable: true,
+                    get: function() {
+                        return 'bar'
+                    }
+                }
+            }, {
+                get bar() {
+                    return 'foo'
+                }
+            });
+
+            expect(obj).to.have.property('bar');
+            expect(obj).to.have.property('foo');
+            expect(obj.bar).to.be.equal('foo');
+            expect(obj.foo).to.be.equal('bar');
+
         });
     });
 });
