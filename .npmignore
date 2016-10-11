@@ -2,5 +2,6 @@
 !index.js
 !collections.js
 !objects.js
+!arrays.js
 !types.js
 !extend.js

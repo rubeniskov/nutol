@@ -36,5 +36,65 @@ var self = module.exports = {
             values[i] = obj[keys[i]];
 
         return values;
+    },
+    pairs: function(obj) {
+        var i,
+
+            keys = _.keys(obj),
+
+            length = keys.length
+
+        pairs = Array(length);
+
+        for (i = 0; i < length; i++) {
+            pairs[i] = [keys[i], obj[keys[i]]];
+        }
+        return pairs;
+    },
+    value: function(obj, key, val) {
+        if (key != null)
+            return self.value(obj)(key, val);
+
+        return function(key, val) {
+            var keys = key instanceof Array ? key : ('' + key).split(/\./);
+
+            key = keys.shift();
+
+            return key == null ? void 0 : keys.length > 0 ? self.value(obj[key], keys, val) : (val != null ? obj[key] = val : obj[key])
+        }
+    },
+    property: function(key, obj) {
+        if (obj != null)
+            return self.property(key)(obj);
+
+        return function(obj) {
+            return obj == null ? void 0 : self.value(obj, key);
+        };
+    },
+    matches: function(attrs, obj) {
+        if (obj)
+            return self.matches(attrs)(obj);
+
+        var pairs = self.pairs(attrs),
+
+            length = pairs.length;
+
+        return function(obj) {
+            if (obj == null)
+                return !length;
+
+            obj = new Object(obj);
+
+            for (var i = 0; i < length; i++) {
+                var pair = pairs[i],
+                    key = pair[0];
+
+                if (pair[1] !== obj[key] || !(key in obj)) return false;
+            }
+            return true;
+        };
+    },
+    has: function(obj, key) {
+        return obj != null && Object.hasOwnProperty.call(obj, key);
     }
 }
