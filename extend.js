@@ -1,23 +1,5 @@
 var types = require('./types'),
-    HAS_SUPPORT_DEFINE_PROPERTY = !!Object.defineProperty
-    propertyDescriptor = function(descriptor) {
-        return types.isLikePropertyDescriptor(descriptor) ? descriptor : {
-            configurable: true,
-            enumerable: true,
-            value: descriptor
-        };
-    },
-    setProperty = function(target, name, descriptor) {
-        descriptor = propertyDescriptor(descriptor);
-        return HAS_SUPPORT_DEFINE_PROPERTY
-            ? Object.defineProperty(target, name, descriptor)
-            : target[name] = descriptor.value;
-    },
-    getProperty = function(obj, name) {
-        return types.isLikePropertyDescriptor(obj[name])
-            ? propertyDescriptor(obj[name])
-            : Object.getOwnPropertyDescriptor(obj, name);
-    }
+    objects = require('./objects');
 
 module.exports = function extend() {
     var sources, name, src, copy, lpd, copyIsArray, clone;
@@ -50,7 +32,7 @@ module.exports = function extend() {
                         }
                         target[name] = extend(deep, clone, copy);
                     } else if (typeof copy !== 'undefined') {
-                        setProperty(target, name, getProperty(sources, name));
+                        objects.property(target, name, objects.property(sources, name));
                     }
                 }
             }
