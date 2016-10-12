@@ -1,6 +1,6 @@
 {
   "name": "nutol",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Nutol is collections of functions thats provides usefull Node utilities",
   "main": "index.js",
   "publishConfig": {
